@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판타로즈 (Fantarose) - 오늘의 타로 처방전</title>
+    <!-- Google Fonts for Retro City Pop Vibe and Readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@400;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables based on Brand Identity */
+        :root {
+            --bg-color: #111424; /* Deep Navy Night */
+            --bg-gradient: linear-gradient(135deg, #111424 0%, #2A1B3D 100%); /* City Navy to Deep Purple */
+            --text-main: #FFF8F0; /* Cream White */
+            --accent-pink: #FFB3A7; /* Fantarose Pink (Lati) */
+            --accent-purple: #7B5EA7; /* Midnight Purple (Lumi) */
+            --glow-pink: rgba(255, 179, 167, 0.6);
+            --glow-purple: rgba(123, 94, 167, 0.6);
+            --card-bg: rgba(255, 248, 240, 0.05);
+            --card-border: rgba(255, 248, 240, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Serif KR', serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient glowing orbs (City Pop lights effect) */
+        .ambient-light {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+            animation: breathe 8s infinite alternate ease-in-out;
+        }
+        .light-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-pink);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        .light-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-purple);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -4s;
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 500px; /* Mobile optimal width */
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--glow-pink);
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Glassmorphism Card Container */
+        .card-stage {
+            perspective: 1000px;
+            margin: 20px auto;
+            width: 240px;
+            height: 380px;
+            position: relative;
+        }
+
+        .tarot-card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+        }
+
+        /* Flip Action */
+        .tarot-card.flipped {
+            transform: rotateY(180deg) scale(1.05);
+            box-shadow: 0 0 30px var(--glow-purple);
+        }
+
+        .card-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--card-border);
+            padding: 20px;
+        }
+
+        /* Card Back (Unopened) */
+        .card-back {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,179,167,0.3);
+            background-image: 
+                radial-gradient(circle at 50% 50%, transparent 40%, rgba(123, 94, 167, 0.1) 100%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,179,167,0.03) 10px, rgba(255,179,167,0.03) 20px);
+        }
+
+        .card-back::after {
+            content: '★';
+            font-size: 3rem;
+            color: var(--accent-pink);
+            text-shadow: 0 0 15px var(--glow-pink);
+            animation: starPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Card Front (Revealed) */
+        .card-front {
+            background: #1A1C29;
+            transform: rotateY(180deg);
+            border-color: var(--accent-purple);
+            text-align: center;
+        }
+
+        .card-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--accent-pink);
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-figure {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-purple);
+            background: linear-gradient(135deg, rgba(123,94,167,0.2) 0%, rgba(255,179,167,0.2) 100%);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-figure::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 1px dashed rgba(255,248,240,0.3);
+            border-radius: 50%;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .healing-message {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 1.8rem;
+            color: var(--accent-pink);
+            line-height: 1.4;
+            text-shadow: 0 0 8px rgba(255, 179, 167, 0.4);
+            word-break: keep-all;
+        }
+
+        /* Neon Button */
+        .draw-btn {
+            background: transparent;
+            color: var(--accent-pink);
+            border: 1px solid var(--accent-pink);
+            padding: 15px 30px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 179, 167, 0.2), inset 0 0 10px rgba(255, 179, 167, 0.1);
+            margin-top: 10px;
+        }
+
+        .draw-btn:hover {
+            background: var(--accent-pink);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--glow-pink), inset 0 0 15px var(--glow-pink);
+            transform: translateY(-2px);
+        }
+        
+        .draw-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .instruction {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 248, 240, 0.6);
+            margin-top: -20px;
+            transition: opacity 0.5s;
+        }
+
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Action Buttons Area */
+        .action-area {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.5s; /* Delay until card flip finishes */
+            pointer-events: none;
+        }
+
+        .action-area.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .sub-btn {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-main);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: background 0.2s;
+        }
+
+        .sub-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Mood lighting elements -->
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+
+    <div class="container">
+        <header>
+            <h1>FANTAROSE</h1>
+            <p>오늘의 당신에게 필요한 카드는?</p>
+        </header>
+
+        <p class="instruction" id="instructionTx">카드를 탭하여 뒷면을 확인하세요.</p>
+
+        <div class="card-stage" id="cardContainer">
+            <div class="tarot-card" id="tarotCard">
+                <!-- Card Back -->
+                <div class="card-face card-back"></div>
+                
+                <!-- Card Front (Revealed dynamically via JS) -->
+                <div class="card-face card-front">
+                    <div class="card-number" id="cNum">0</div>
+                    <div class="card-title" id="cTitle">The Fool</div>
+                    <div class="card-figure">
+                        <!-- Star pupil symbol representing the characters -->
+                        <span style="font-size:2rem; color:var(--accent-pink); text-shadow:0 0 10px var(--glow-pink)">★</span>
+                    </div>
+                    <div class="healing-message" id="cMessage">
+                        "지금 이 순간, 그냥 걸어가도 괜찮아요."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="draw-btn" id="drawBtn">운명의 카드 섞기</button>
+
+        <div class="action-area" id="actionBtns">
+            <button class="sub-btn" onclick="shareResult()">결과 공유하기</button>
+            <button class="sub-btn" onclick="location.reload()">다시 뽑기</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // 22 Major Arcana Data mapping to Fantarose Healing Quotes
+        const tarotData = [
+            { id: 0, title: "The Fool", msg: "지금 이 순간, 그냥 걸어가도 괜찮아요." },
+            { id: 1, title: "The Magician", msg: "당신에겐 이미 모든 게 있어요." },
+            { id: 2, title: "The High Priestess", msg: "말하지 않아도 알고 있어요." },
+            { id: 3, title: "The Empress", msg: "오늘은 그냥 피어 있어도 돼요." },
+            { id: 4, title: "The Emperor", msg: "한 번만 먼저 가도 괜찮아요." },
+            { id: 5, title: "The Hierophant", msg: "당신 곁에 오래된 지혜가 있어요." },
+            { id: 6, title: "The Lovers", msg: "당신에게 필요한 카드는, 연인이에요." },
+            { id: 7, title: "The Chariot", msg: "두려워도 앞으로." },
+            { id: 8, title: "Strength", msg: "오늘도 문 열었다는 게, 충분해요." },
+            { id: 9, title: "The Hermit", msg: "혼자인 시간이 당신을 채우고 있어요." },
+            { id: 10, title: "Wheel of Fortune", msg: "흐름이 바뀌고 있어요." },
+            { id: 11, title: "Justice", msg: "받아야 할 것들이 오고 있어요." },
+            { id: 12, title: "The Hanged Man", msg: "지금 멈추는 것도 움직임이에요." },
+            { id: 13, title: "Death", msg: "끝나야 시작될 수 있어요." },
+            { id: 14, title: "Temperance", msg: "지금 이 균형, 오래오래 있었으면 해요." },
+            { id: 15, title: "The Devil", msg: "놓아버려도 괜찮아요." },
+            { id: 16, title: "The Tower", msg: "무너져야 새로 지을 수 있어요." },
+            { id: 17, title: "The Star", msg: "당신은 이미 충분히 빛나고 있어요." },
+            { id: 18, title: "The Moon", msg: "헤매도 돼요. 달이 있으니까." },
+            { id: 19, title: "The Sun", msg: "오늘 하루가, 전부예요." },
+            { id: 20, title: "Judgement", msg: "이제 말해도 돼요." },
+            { id: 21, title: "The World", msg: "여기까지 온 당신에게, 수고했어요." }
+        ];
+
+        const cardContainer = document.getElementById('cardContainer');
+        const tarotCard = document.getElementById('tarotCard');
+        const drawBtn = document.getElementById('drawBtn');
+        const instructionTx = document.getElementById('instructionTx');
+        const actionBtns = document.getElementById('actionBtns');
+
+        // Text elements to update
+        const cNum = document.getElementById('cNum');
+        const cTitle = document.getElementById('cTitle');
+        const cMessage = document.getElementById('cMessage');
+
+        let isCardDrawn = false;
+        let selectedCard = null;
+
+        // "운명의 카드 섞기" 버튼 클릭 시
+        drawBtn.addEventListener('click', () => {
+            if(isCardDrawn) return;
+            
+            // Random card pick
+            const randIndex = Math.floor(Math.random() * tarotData.length);
+            selectedCard = tarotData[randIndex];
+            
+            // Set Data to DOM (hidden front side)
+            cNum.textContent = selectedCard.id;
+            cTitle.textContent = selectedCard.title;
+            cMessage.textContent = `"${selectedCard.msg}"`;
+            
+            // UI Updates
+            instructionTx.textContent = "소리내어 질문을 던지고, 카드를 탭하세요.";
+            drawBtn.classList.add('fade-out'); // Hide draw button
+            
+            // Give card a little shake animation to tempt user
+            tarotCard.style.animation = "shake 0.5s ease-in-out infinite alternate";
+        });
+
+        // Add shake keyframes to head dynamically
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = '@keyframes shake { 0% { transform: translateY(0px); } 100% { transform: translateY(-5px); box-shadow: 0 15px 45px rgba(255,179,167,0.4); } }';
+        document.getElementsByTagName('head')[0].appendChild(style);
+
+        // 카드 터치/클릭 시 뒤집기
+        tarotCard.addEventListener('click', () => {
+            if(!selectedCard) {
+                // Not randomized yet, simulate click on draw button
+                drawBtn.click();
+                setTimeout(() => tarotCard.click(), 500); // follow up flip
+                return;
+            }
+
+            if(!isCardDrawn) {
+                isCardDrawn = true;
+                tarotCard.style.animation = "none"; // stop shaking
+                instructionTx.classList.add('fade-out');
+                
+                // Flip animation
+                tarotCard.classList.add('flipped');
+                
+                // Show actions (Share & Retry)
+                actionBtns.classList.add('visible');
+            }
+        });
+
+        // 결과 공유 시뮬레이션
+        function shareResult() {
+            const shareText = `[판타로즈 타로] 오늘 나의 처방전 💌\n카드: ${selectedCard.title}\n"${selectedCard.msg}"\n\n#판타로즈 #시티팝타로 #힐링처방전`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: '오늘의 판타로즈 카드',
+                    text: shareText,
+                    url: window.location.href,
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(shareText);
+                alert("결과가 클립보드에 복사되었습니다. SNS에 공유해보세요!");
+            }
+        }
+    </script>
+</body>
+</html>
