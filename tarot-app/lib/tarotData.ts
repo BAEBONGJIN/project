@@ -5,6 +5,7 @@ export interface TarotCard {
   nameEn: string
   nameKo: string
   keywords: string[]
+  traditionalMeaning: string  // 전통 타로 해석
   healingMessage: string
   character: Character // 주 등장 캐릭터
   characterMessages: {
@@ -22,6 +23,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Fool',
     nameKo: '바보',
     keywords: ['시작', '순수', '용기'],
+    traditionalMeaning: '새로운 여정의 시작을 알리는 카드입니다. 순수한 믿음으로 미지의 세계를 향해 발을 내딛는 에너지를 상징하며, 결과에 얽매이지 않고 현재의 순간에 충실한 자발적 용기를 나타냅니다. 경험 없음은 무능함이 아니라 어떤 가능성도 열려있다는 무한한 잠재력입니다.',
     healingMessage: '지금 이 순간, 그냥 걸어가도 괜찮아요.',
     character: 'lati',
     characterMessages: {
@@ -37,6 +39,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Magician',
     nameKo: '마법사',
     keywords: ['능력', '의지', '실현'],
+    traditionalMeaning: '손 안의 모든 도구를 활용해 생각을 현실로 구현하는 강력한 카드입니다. 4원소(완드·컵·소드·펜타클)를 모두 갖춘 마법사는 의지와 기술, 자원이 정렬된 상태를 상징합니다. 집중력과 실행력을 발휘할 때 원하는 것을 현실로 이끌어낼 수 있는 최적의 시기입니다.',
     healingMessage: '당신에겐 이미 모든 게 있어요.',
     character: 'lati',
     characterMessages: {
@@ -52,6 +55,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The High Priestess',
     nameKo: '여사제',
     keywords: ['직관', '내면', '신비'],
+    traditionalMeaning: '드러나지 않은 진실과 잠재의식의 지혜를 상징하는 카드입니다. 이성보다 직관을, 외부보다 내면의 목소리에 귀를 기울여야 할 시기를 나타냅니다. 아직 드러나지 않은 비밀이나 숨겨진 영향력이 존재할 수 있으며, 침묵과 관찰 속에서 진실이 스스로 모습을 드러낼 것입니다.',
     healingMessage: '말하지 않아도 알고 있어요.',
     character: 'lumi',
     characterMessages: {
@@ -67,6 +71,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Empress',
     nameKo: '여황제',
     keywords: ['풍요', '돌봄', '자연'],
+    traditionalMeaning: '풍요, 다산, 자연의 순환을 상징하는 카드입니다. 창조적 에너지가 충만한 시기로 아이디어가 꽃을 피우고 감각적 기쁨이 넘칩니다. 억지로 서두르지 않아도 자연이 계절을 바꾸듯 때가 되면 결실이 찾아오며, 스스로를 돌보는 것이 가장 강력한 창조 행위임을 알려줍니다.',
     healingMessage: '오늘은 그냥 피어 있어도 돼요.',
     character: 'lati',
     characterMessages: {
@@ -82,6 +87,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Emperor',
     nameKo: '황제',
     keywords: ['주도권', '결단', '안정'],
+    traditionalMeaning: '권위, 구조, 안정된 기반을 상징하는 카드입니다. 규율과 전략적 사고를 통해 현실적 목표를 달성할 수 있는 시기를 나타냅니다. 리더십을 발휘하고 명확한 경계를 설정하며 감정보다 이성을 앞세울 때 안정된 결과를 이끌어낼 수 있습니다.',
     healingMessage: '한 번만 먼저 가도 괜찮아요.',
     character: 'lumi',
     characterMessages: {
@@ -97,6 +103,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Hierophant',
     nameKo: '교황',
     keywords: ['지혜', '전통', '스승'],
+    traditionalMeaning: '전통적 지혜, 제도적 가르침, 영적 안내를 상징하는 카드입니다. 검증된 방식과 기존의 체계 안에서 지식을 탐구하는 시기를 나타냅니다. 믿을 수 있는 스승이나 안내자의 도움을 구하거나 공동체의 가르침 안에서 자신의 길을 찾을 때 성장과 깨달음이 찾아옵니다.',
     healingMessage: '당신 곁에 오래된 지혜가 있어요.',
     character: 'lumi',
     characterMessages: {
@@ -112,6 +119,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Lovers',
     nameKo: '연인',
     keywords: ['사랑', '선택', '연결'],
+    traditionalMeaning: '관계, 가치에 따른 선택, 영혼의 합일을 상징하는 카드입니다. 단순한 낭만적 사랑을 넘어 자신의 내면 가치와 일치하는 진정한 선택을 요구합니다. 두 갈래의 길 앞에서 두려움이 아닌 가슴이 이끄는 방향을 따를 때 진정한 연결과 조화가 이루어집니다.',
     healingMessage: '당신에게 필요한 카드는, 연인이에요.',
     character: 'lati',
     characterMessages: {
@@ -127,6 +135,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Chariot',
     nameKo: '전차',
     keywords: ['전진', '의지', '극복'],
+    traditionalMeaning: '강한 의지와 자기 통제로 장애물을 극복하는 승리의 카드입니다. 스핑크스 두 마리가 끄는 전차처럼, 내면의 상반된 힘(이성과 감성, 빛과 그림자)을 통합하여 하나의 방향으로 나아가는 에너지를 나타냅니다. 흔들리지 않는 집중력과 결의가 있다면 어떤 도전도 극복할 수 있습니다.',
     healingMessage: '두려워도 앞으로.',
     character: 'lati',
     characterMessages: {
@@ -142,6 +151,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'Strength',
     nameKo: '힘',
     keywords: ['내면의 힘', '인내', '용기'],
+    traditionalMeaning: '야수를 억압이 아닌 따뜻함과 연민으로 다루는 진정한 용기를 상징하는 카드입니다. 두려움, 분노, 충동 같은 내면의 원초적 에너지를 부드럽지만 단호하게 통제하는 내적 강인함을 나타냅니다. 외적인 힘이 아닌 내면의 온화함과 인내가 가장 강력한 힘임을 알려줍니다.',
     healingMessage: '오늘도 문 열었다는 게, 충분해요.',
     character: 'lati',
     characterMessages: {
@@ -157,6 +167,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Hermit',
     nameKo: '은둔자',
     keywords: ['고독', '내면 탐구', '성찰'],
+    traditionalMeaning: '군중에서 물러나 스스로의 빛으로 자신을 안내하는 성찰의 카드입니다. 외부의 답 대신 고독 속에서 내면의 지혜를 탐구하는 시기를 나타냅니다. 은둔자의 등불은 타인을 위한 것이 아니라 자신의 길을 밝히기 위한 것으로, 혼자만의 시간이 깊은 자기 이해로 이어집니다.',
     healingMessage: '혼자인 시간이 당신을 채우고 있어요.',
     character: 'lumi',
     characterMessages: {
@@ -172,6 +183,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'Wheel of Fortune',
     nameKo: '운명의 수레바퀴',
     keywords: ['변화', '순환', '전환'],
+    traditionalMeaning: '삶의 끊임없는 순환과 운명의 전환점을 상징하는 카드입니다. 수레바퀴는 멈추지 않고 돌아가며 높은 것은 낮아지고 낮은 것은 높아집니다. 변화에 저항하기보다 흐름에 올라타는 지혜가 필요하며, 어떤 상황도 영원하지 않다는 진실이 불행 속에서는 희망이, 행운 속에서는 겸손이 됩니다.',
     healingMessage: '흐름이 바뀌고 있어요.',
     character: 'pipi',
     characterMessages: {
@@ -187,6 +199,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'Justice',
     nameKo: '정의',
     keywords: ['균형', '인과', '공정'],
+    traditionalMeaning: '진실, 공정함, 인과의 법칙을 상징하는 카드입니다. 모든 행동에는 상응하는 결과가 따르며 지금의 상황은 과거의 선택들이 낳은 결실입니다. 편견 없는 시선으로 상황을 바라보고 균형 잡힌 판단을 내릴 때 공정한 결과를 얻을 수 있으며, 정직함이 최선의 전략입니다.',
     healingMessage: '받아야 할 것들이 오고 있어요.',
     character: 'lumi',
     characterMessages: {
@@ -202,6 +215,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Hanged Man',
     nameKo: '매달린 사람',
     keywords: ['정지', '새로운 시각', '기다림'],
+    traditionalMeaning: '자발적인 멈춤과 시각의 전환을 통해 새로운 통찰을 얻는 카드입니다. 거꾸로 매달린 인물의 표정은 고통이 아닌 평온함으로, 이 멈춤이 강요된 것이 아닌 선택임을 보여줍니다. 익숙한 관점을 내려놓고 전혀 다른 각도에서 상황을 바라볼 때 숨겨진 진실과 더 깊은 지혜가 드러납니다.',
     healingMessage: '지금 멈추는 것도 움직임이에요.',
     character: 'pipi',
     characterMessages: {
@@ -217,6 +231,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'Death',
     nameKo: '죽음',
     keywords: ['변환', '끝과 시작', '전환'],
+    traditionalMeaning: '전통 타로에서 가장 오해받는 카드로, 물리적 죽음이 아닌 근본적인 변환을 상징합니다. 낡은 형태의 종결과 새로운 단계의 탄생을 나타내며, 계절이 반드시 바뀌듯 이 변화는 필연입니다. 과거에 집착할수록 고통이 커지며, 흘려보내는 용기를 가질 때 진정한 재탄생이 시작됩니다.',
     healingMessage: '끝나야 시작될 수 있어요.',
     character: 'pipi',
     characterMessages: {
@@ -232,6 +247,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'Temperance',
     nameKo: '절제',
     keywords: ['조화', '균형', '절제'],
+    traditionalMeaning: '절제와 조화, 인내를 통한 통합을 상징하는 카드입니다. 두 컵 사이로 물을 흘리는 천사처럼 극단 사이에서 완벽한 균형을 찾으며, 서두르지 않고 점진적으로 나아가는 지혜를 나타냅니다. 삶의 다양한 측면을 무리 없이 조화롭게 혼합할 때 최선의 결과가 자연스럽게 흘러옵니다.',
     healingMessage: '지금 이 균형, 오래오래 있었으면 해요.',
     character: 'lati',
     characterMessages: {
@@ -247,6 +263,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Devil',
     nameKo: '악마',
     keywords: ['집착', '속박', '해방'],
+    traditionalMeaning: '자신을 옭아매는 물질적 집착, 두려움, 그림자 자아를 상징하는 카드입니다. 악마에게 묶인 두 인물의 사슬은 느슨하여 언제든 스스로 벗어날 수 있음을 보여줍니다. 속박처럼 보이는 상황은 실은 스스로 선택한 것이며, 무의식적 패턴과 그림자를 직시하는 것이 해방의 첫걸음입니다.',
     healingMessage: '놓아버려도 괜찮아요.',
     character: 'lumi',
     characterMessages: {
@@ -262,6 +279,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Tower',
     nameKo: '탑',
     keywords: ['붕괴', '충격', '재건'],
+    traditionalMeaning: '거짓된 기반 위에 쌓인 구조의 갑작스러운 붕괴를 상징하는 카드입니다. 번개에 맞아 무너지는 탑은 충격적이지만 필요한 계시로, 진실을 가리던 것들이 강제로 제거되는 과정입니다. 무너짐은 끝이 아니라 더 단단하고 진실된 토대 위에 새로 짓기 위한 필연적인 준비입니다.',
     healingMessage: '무너져야 새로 지을 수 있어요.',
     character: 'pipi',
     characterMessages: {
@@ -277,6 +295,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Star',
     nameKo: '별',
     keywords: ['희망', '치유', '빛'],
+    traditionalMeaning: '어둠의 시간 이후 찾아오는 희망, 영감, 치유를 상징하는 카드입니다. 별빛 아래 두 개의 물병을 쏟아붓는 여인처럼, 우주의 풍요가 아낌없이 흘러들어오는 시기를 나타냅니다. 스스로의 가능성을 신뢰하고 회복에 몸을 맡길 때 내면의 빛이 조용하지만 확실하게 되살아납니다.',
     healingMessage: '당신은 이미 충분히 빛나고 있어요.',
     character: 'lumi',
     characterMessages: {
@@ -292,6 +311,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Moon',
     nameKo: '달',
     keywords: ['혼란', '무의식', '방황'],
+    traditionalMeaning: '환상, 무의식, 불확실성의 시기를 상징하는 카드입니다. 개와 늑대가 함께 짖는 달빛 아래처럼 현실이 흐릿하게 보이고 두려움이나 불안이 올라오지만, 이는 내면 깊은 곳의 진실이 표면으로 올라오려는 신호입니다. 혼란스럽더라도 내면의 직관을 나침반 삼아 한 걸음씩 나아가는 것이 중요합니다.',
     healingMessage: '헤매도 돼요. 달이 있으니까.',
     character: 'pipi',
     characterMessages: {
@@ -307,6 +327,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The Sun',
     nameKo: '태양',
     keywords: ['기쁨', '충만', '성공'],
+    traditionalMeaning: '기쁨, 생명력, 성공과 명확함을 상징하는 가장 밝고 긍정적인 카드 중 하나입니다. 어둠이 걷히고 모든 것이 환하게 드러나는 시기로, 진정한 자아를 자유롭게 표현할 수 있습니다. 순수한 아이처럼 삶의 기쁨을 있는 그대로 누리며 목표를 향해 즐겁고 자신 있게 나아갈 수 있는 축복받은 순간입니다.',
     healingMessage: '오늘 하루가, 전부예요.',
     character: 'lati',
     characterMessages: {
@@ -322,6 +343,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'Judgement',
     nameKo: '심판',
     keywords: ['깨달음', '부름', '응답'],
+    traditionalMeaning: '과거를 정산하고 더 높은 차원의 사명으로 나아가라는 각성의 카드입니다. 나팔 소리에 무덤에서 일어나는 인물들처럼, 내면 깊은 곳에서 들리는 부름에 응답하고 자신을 용서하며 새롭게 일어서는 시기를 나타냅니다. 심판은 외부에서 오는 것이 아니라 내면의 진실과 마주하는 자기 각성의 과정입니다.',
     healingMessage: '이제 말해도 돼요.',
     character: 'lumi',
     characterMessages: {
@@ -337,6 +359,7 @@ export const tarotCards: TarotCard[] = [
     nameEn: 'The World',
     nameKo: '세계',
     keywords: ['완성', '성취', '통합'],
+    traditionalMeaning: '여정의 완성과 새로운 순환의 시작을 상징하는 메이저 아르카나의 최고 성취 카드입니다. 네 모서리의 존재들(사자·황소·독수리·천사)이 지켜보는 가운데 모든 경험이 하나로 통합되어 전체가 되는 충만한 순간입니다. 이 완성은 동시에 새로운 여정의 문이 열림을 뜻하며, 삶의 춤은 계속됩니다.',
     healingMessage: '여기까지 온 당신에게, 수고했어요.',
     character: 'pipi',
     characterMessages: {

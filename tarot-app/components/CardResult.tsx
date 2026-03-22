@@ -150,6 +150,22 @@ export default function CardResult({ cards, character, spreadMode, onReset }: Pr
                   </div>
                 </div>
 
+                {/* 전통 타로 해석 */}
+                <div
+                  className="rounded-xl p-4 mb-3"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${colors.border}` }}
+                >
+                  <p
+                    className="text-xs font-semibold mb-2 uppercase tracking-widest"
+                    style={{ color: colors.text + '99' }}
+                  >
+                    전통 해석
+                  </p>
+                  <p className="text-white/60 text-xs leading-relaxed">
+                    {card.traditionalMeaning}
+                  </p>
+                </div>
+
                 {/* 힐링 메시지 */}
                 <div
                   className="rounded-xl p-4 mb-4"
